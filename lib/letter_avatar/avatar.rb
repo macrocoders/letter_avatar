@@ -44,8 +44,8 @@ module LetterAvatar
 
         fullsize = fullsize_path(identity)
         if !cache || !File.exist?(fullsize)
-          generate_fullsize(identity) 
-        end 
+          generate_fullsize(identity)
+        end
         LetterAvatar.resize(fullsize, filename, size, size) if size != FULLSIZE
 
         filename
@@ -67,7 +67,7 @@ module LetterAvatar
 
         LetterAvatar.execute(
           %W(
-            convert
+            magick convert
             -size #{FULLSIZE}x#{FULLSIZE}
             xc:#{to_rgb(identity.color)}
             -pointsize #{LetterAvatar.pointsize}
